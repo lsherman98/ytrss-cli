@@ -1,4 +1,4 @@
-module github.com/lsherman98/yt-rss-cli
+module github.com/lsherman98/ytrss-cli
 
 go 1.25.0
 

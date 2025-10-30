@@ -5,8 +5,8 @@ import (
 	"os"
 
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/lsherman98/yt-rss-cli/ui"
-	"github.com/lsherman98/yt-rss-cli/updater"
+	"github.com/lsherman98/ytrss-cli/ui"
+	"github.com/lsherman98/ytrss-cli/updater"
 )
 
 var (

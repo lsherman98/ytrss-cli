@@ -13,7 +13,7 @@ import (
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/lsherman98/yt-rss-cli/api"
+	"github.com/lsherman98/ytrss-cli/api"
 )
 
 type ViewState int
