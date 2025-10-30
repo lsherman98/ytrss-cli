@@ -1,0 +1,74 @@
+version: 2
+
+before:
+    hooks:
+        - go mod tidy
+
+builds:
+    - id: ytrss
+      binary: ytrss
+      env:
+          - CGO_ENABLED=0
+      goos:
+          - linux
+          - darwin
+      goarch:
+          - amd64
+          - arm64
+      ldflags:
+          - -s -w
+          - -X main.version={{.Version}}
+          - -X main.commit={{.Commit}}
+          - -X main.date={{.Date}}
+      main: .
+
+archives:
+    - id: ytrss-archive
+      formats:
+          - tar.gz
+
+checksum:
+    name_template: "checksums.txt"
+    algorithm: sha256
+
+brews:
+    - name: ytrss
+      repository:
+          owner: lsherman98
+          name: homebrew-ytrss
+          token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+      commit_author:
+          name: lsherman98
+          email: levisherman98@gmail.com
+      homepage: "https://github.com/lsherman98/ytrss-cli"
+      description: "A CLI tool to get RSS feeds for YouTube channels and playlists."
+      license: "MIT"
+      install: |
+          bin.install "ytrss"
+
+changelog:
+    sort: asc
+    use: github
+    filters:
+        exclude:
+            - "^docs:"
+            - "^test:"
+            - "^chore:"
+            - "^ci:"
+    groups:
+        - title: "Features"
+          regexp: '^feat(\(.*\))?:'
+          order: 0
+        - title: "Bug Fixes"
+          regexp: '^fix(\(.*\))?:'
+          order: 1
+        - title: "Other Changes"
+          order: 999
+
+release:
+    github:
+        owner: lsherman98
+        name: ytrss-cli
+    draft: false
+    prerelease: auto
+    mode: replace
