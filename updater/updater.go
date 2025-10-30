@@ -86,7 +86,7 @@ func GetAssetName(version string) string {
 		ext = ".zip"
 	}
 
-	return fmt.Sprintf("yt-rss-cli_%s_%s_%s%s", version, osName, arch, ext)
+	return fmt.Sprintf("ytrss-cli_%s_%s_%s%s", version, osName, arch, ext)
 }
 
 func CheckAndUpdate(currentVersion string) (bool, error) {
